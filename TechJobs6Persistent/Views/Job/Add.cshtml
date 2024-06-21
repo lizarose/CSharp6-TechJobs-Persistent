@@ -9,7 +9,23 @@
         <input class="form-control" />
         <span></span>
     </div>
+
     <br />
+
+    <div class="form-group">
+        <label>Employer</label>
+        <select class="form-control">
+            @foreach (Employer employer in Employers)
+            {
+                <option>@employer.Name</option>
+            }
+        </select>
+        <span></span>
+        <a asp-controller="Employer" asp-action="Create">Add New Employer</a>
+    </div>
+
+    <br />
+   
 
     <input type="submit" value="Add Job" />
 </form>
