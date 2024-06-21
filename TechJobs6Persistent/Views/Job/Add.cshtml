@@ -1,25 +1,20 @@
 ﻿@using TechJobs6Persistent.ViewModels
-
+@model AddJobViewModel
 
 <h1>Add Job</h1>
 
 <form asp-controller="Job" asp-action="Add" method="post">
     <div class="form-group">
-        <label>Name</label>
-        <input class="form-control" />
+        <label>Job Title: </label>
+        <input class="form-control" asp-for="Name"/>
         <span></span>
     </div>
 
     <br />
 
     <div class="form-group">
-        <label>Employer</label>
-        <select class="form-control">
-            @foreach (Employer employer in Employers)
-            {
-                <option>@employer.Name</option>
-            }
-        </select>
+        <label>Employer: </label>
+        <select class="form-control" asp-for="Employer" asp-items="@Model.Employer"></select>
         <span></span>
         <a asp-controller="Employer" asp-action="Create">Add New Employer</a>
     </div>
