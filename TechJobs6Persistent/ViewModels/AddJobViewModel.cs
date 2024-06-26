@@ -11,5 +11,24 @@ namespace TechJobs6Persistent.ViewModels
         public int? EmployerId { get; set; }
         public List<SelectListItem>? Employer { get; set; }
 
+        public AddJobViewModel (List<Employer> employers) {
+
+            Employer = new List<SelectListItem>();
+
+            foreach (var employ in employers)
+            {
+                Employer.Add(
+                new SelectListItem
+                {
+                    Value = employ.Id.ToString(),
+                    Text = employ.Name
+                }); 
+            }
+        }
+
+        public AddJobViewModel()
+        {
+
+        }
     }
 }

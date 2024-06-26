@@ -13,9 +13,8 @@
     <br />
 
     <div class="form-group">
-        <label>Employer: </label>
-        <select class="form-control" asp-for="Employer" asp-items="@Model.Employer"></select>
-        <span></span>
+        <label asp-for="EmployerId">Employer: </label>
+        <select asp-for="EmployerId" asp-items="Model.Employer"></select>
         <a asp-controller="Employer" asp-action="Create">Add New Employer</a>
     </div>
 

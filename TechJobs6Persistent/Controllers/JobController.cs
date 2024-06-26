@@ -33,27 +33,30 @@ namespace TechJobs6Persistent.Controllers
         {
             //List of Employer objects pulled from Employers dbContext
             List<Employer> employers = context.Employers.ToList();
-            //Instance of AddJobViewModel
-            var newAddJobViewModel = new AddJobViewModel();
+            //Instance of AddJobViewModel and pass in employers list
+            var newAddJobViewModel = new AddJobViewModel(employers);
             //Pass Instance into View
             return View(newAddJobViewModel);
         }
 
-        [HttpPost]
-        public IActionResult ProcessAddJobForm(AddJobViewModel addJobViewModel)
+        [HttpPost("/Job/Add")]
+        public IActionResult Add(AddJobViewModel addJobViewModel)
         {
              if(ModelState.IsValid)
             {
+                //Find 
+                Employer theEmployers = context.Employers.Find(addJobViewModel.EmployerId);
                 //If valid create new job object
                 Job newJob = new Job
                 {
-                    Name = addJobViewModel.Name
+                    Name = addJobViewModel.Name,
+                    Employer = theEmployers
                 };
                 //Add new job and save changes
                 context.Jobs.Add(newJob);
                 context.SaveChanges();
                  //redirect 
-                return Redirect("/Jobs");
+                return Redirect("/Job");
             }
             return View("Add", addJobViewModel);
         }
