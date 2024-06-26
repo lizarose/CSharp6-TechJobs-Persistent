@@ -8,7 +8,7 @@
         -- EmployerId (int)
         
 --Part 2: Write a query to list the names of the employers in St. Louis City.
-        -- SELECT *
+        -- SELECT employers.name
         -- FROM employers
         -- WHERE employers.location = "St. Louis City";
 
@@ -16,5 +16,6 @@
     --If a skill does not have a job listed, it should not be included in the results of this query.
         -- SELECT skills.SkillName, skills.Id, jobskill.JobsId, jobskill.SkillsId
         -- FROM skills
-        -- WHERE jobskill ON jobskill.skillsId = skills.ID IS NOT NULL;
+        -- INNER JOIN jobskill ON skills.Id = jobskill.SkillsId
+        -- WHERE skills.SkillName IS NOT NULL;
         -- ORDER BY skills.SkillName ASC;
